@@ -1,7 +1,7 @@
-# File-Manager
-An Open Source File Management Application
+# What is Maestro?
+Maestro is an open source file manager, designed to help users to have true control of their files.
 
-This file manager project is part of the Ship-In-30 project from [David's Developer Safeplace](https://discord.gg/devsafeplace) Discord server.
+Maestro is a part of the Ship-In-30 project from [David's Developer Safeplace](https://discord.gg/devsafeplace) Discord server.
 
 ## Features
 Throughout the next 30 days, we as a team aim to add the following:
@@ -13,7 +13,7 @@ Throughout the next 30 days, we as a team aim to add the following:
 
 ## Tech Stack
 
-This project uses React Native to interface managament of files, using Typescript for general functionality.
+Maestro uses React Native to interface managament of files, using Typescript for general functionality.
 
 
 ## Contribution
