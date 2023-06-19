@@ -5,6 +5,7 @@ import {deleteFolder as _deleteFolder} from './deleteFolder';
 import {deleteFile as _deleteFile} from './deleteFile';
 import {moveFile as _moveFile} from './moveFile';
 import {copyFile as _copyFile} from './copyFile';
+import {renameFile as _renameFile} from './renameFile';
 import {info as _info} from './info';
 
 export namespace FM{
@@ -14,6 +15,7 @@ export namespace FM{
     export const createFolder = _createFolder;
     export const deleteFolder = _deleteFolder;
     export const moveFile = _moveFile;
+    export const renameFile = _renameFile;
     export const copyFile = _copyFile;
     export const info = _info;
 }
