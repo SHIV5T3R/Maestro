@@ -1,8 +1,8 @@
 # Getting Started (For Contributors)
-## **Install dependicies**
-## `npm run build`
+## Install Dependencies
+### `npm run build`
 ## **Run App**
-## `npm run windows`
+### `npm run windows`
 <br>
 
 # What is Maestro?
