@@ -1,3 +1,10 @@
+# Getting Started (For Contributors)
+## **Install dependicies**
+## `npm run build`
+## **Run App**
+## `npm run windows`
+<br>
+
 # What is Maestro?
 Maestro is an open source file manager, designed to help users to have true control of their files.
 
