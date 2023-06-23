@@ -1,12 +1,23 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { StyleSheet } from 'react-native';
 
 import Colors from '../constants/Colors';
 import { ExternalLink } from './ExternalLink';
 import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
+import FM from '../API/fileManager';
 
 export default function EditScreenInfo({ path }: { path: string }) {
+
+  /**
+   * this is a visual test to verify the 
+   * package has been imported properly
+   * without causing a crash.s
+   */
+  useEffect(()=>{
+    console.log(FM.locations);
+  })
+
   return (
     <View>
       <View style={styles.getStartedContainer}>
