@@ -1,8 +1,9 @@
 # Getting Started (For Contributors)
+
 ## Install Dependencies
-### `npm run build`
+### `npm install`
 ## **Run App**
-### `npm run windows`
+### `npx expo start`
 <br>
 
 # What is Maestro?
