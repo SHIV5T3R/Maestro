@@ -1,81 +1,52 @@
-import { StyleSheet } from 'react-native';
+import { useState } from 'react'
+import { StyleSheet, TouchableOpacity } from 'react-native'
+import { SquaresFour, ListDashes } from 'phosphor-react-native'
 
-import StorageSpaceOverview from '../../components/dashboard/(file metrics)/StorageSpaceOverview';
-import StorageUsageByFileType from '../../components/dashboard/(file metrics)/StorageUsageByFileType';
-import RecentActivity from '../../components/dashboard/(file metrics)/RecentActvity';
-import QuickActions from '../../components/dashboard/(file metrics)/QuickActions';
-import SyncStatus from '../../components/dashboard/(file metrics)/SyncStatus';
-import FileStatistics from '../../components/dashboard/(file management)/FileStatistics';
-import { Text, View } from '../../components/Themed';
-import { BaseText } from '../../components/StyledText';
+import { Text, View } from '../../components/Themed'
+import FileView from '../../components/FileView'
 
 export default function TabOneScreen() {
+  const [isGridView, setIsGridView] = useState<boolean>(false)
+
+  function toggleGridView() {
+    setIsGridView(!isGridView)
+  }
+
   return (
     <View style={styles.container}>
-      <BaseText style={styles.title}>DASHBOARD</BaseText>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <View style={styles.info}>
-      <FileStatistics />
+      <View style={styles.header}>
+        <Text>Internal storage</Text>
+        <TouchableOpacity onPress={toggleGridView} activeOpacity={0.5}>
+          {isGridView ? <ListDashes /> : <SquaresFour />}
+        </TouchableOpacity>
       </View>
 
-      {/* Metric components below */}
-      <StorageSpaceOverview storageUsed={500} storageAvailable={1000} />    
-      <View style={styles.section}>
-          <BaseText style={styles.sectionTitle}>File Metrics</BaseText>              
+      <View
+        style={styles.separator}
+        lightColor="#eee"
+        darkColor="rgba(255,255,255,0.1)"
+      />
 
-          <View style={styles.metricContainer}>
-            <StorageUsageByFileType />
-            <View style={styles.metricItem}>
-            <RecentActivity />
-            </View>
-            <View style={styles.metricItem}>
-              <SyncStatus />
-            </View>
-          </View>      
-
-      </View>
+      <FileView isGridView={isGridView} />
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 16,
+    justifyContent: 'center'
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginTop: 16,
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginHorizontal: 10,
+    marginTop: 15
   },
   separator: {
-    marginVertical: 16,
+    marginVertical: 10,
     height: 1,
-    width: '50%',
-    backgroundColor: '#eee',
-  },
-  info: {
-    alignItems: 'center',
-    marginBottom: 8,
-  },
-  section: {
-    marginBottom: 24,
-    width: '100%',
-    flex: 1,
-  },
-  sectionTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 30,
-  },
-  metricItem: {
-    paddingTop: 20,
-  },
-  metricContainer: {
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    marginBottom: 16,
-  },
-});
+    width: '100%'
+  }
+})
