@@ -30,10 +30,17 @@ export default function TabLayout() {
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
       }}>
       <Tabs.Screen
-        name="index"
+        name="dashboard"
         options={{
           title: 'Dashboard',
           tabBarIcon: ({ color }) => <TabBarIconMCI name="view-dashboard-variant" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: 'Files',
+          tabBarIcon: ({ color }) => <TabBarIconFA name="file" color={color} />,
           headerRight: () => (
             <Link href="/modal" asChild>
               <Pressable>
@@ -51,9 +58,9 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="three"
         options={{
-          title: 'Tab Two',
+          title: 'Tab Three',
           tabBarIcon: ({ color }) => <TabBarIconFA name="code" color={color} />,
         }}
       />
