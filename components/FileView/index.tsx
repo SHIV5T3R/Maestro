@@ -3,13 +3,14 @@ import { FlatList, StyleSheet } from 'react-native'
 import { Item } from './Item'
 import { View } from '../Themed'
 import { tmp_generateContent } from '../../utils/tmp-generate-content'
+import { ContextMenu } from './ContextMenu'
 
 interface FileViewProps {
   isGridView?: boolean
 }
 
 export default function FileView({ isGridView }: FileViewProps) {
-  const [selectedId, setSelectedId] = useState<string>()
+  const [selectedId, setSelectedId] = useState<string | null>(null)
 
   const numColumns = isGridView ? 5 : 1
   // TODO: replace with real data
@@ -25,11 +26,17 @@ export default function FileView({ isGridView }: FileViewProps) {
         extraData={selectedId}
         numColumns={numColumns}
         renderItem={({ item }) => (
-          <Item
+          <ContextMenu
             item={item}
-            isGridView={isGridView}
-            onPress={() => setSelectedId(item.id)}
-          />
+            onClose={() => setSelectedId(null)}
+            onItemPress={() => setSelectedId(item.id)}
+          >
+            <Item
+              item={item}
+              isGridView={isGridView}
+              selectedItemId={selectedId}
+            />
+          </ContextMenu>
         )}
         ItemSeparatorComponent={() => {
           if (isGridView) return null

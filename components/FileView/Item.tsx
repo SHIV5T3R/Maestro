@@ -1,22 +1,25 @@
-import { Text, TouchableOpacity, StyleSheet } from 'react-native'
-import { Folder, File, CaretRight } from 'phosphor-react-native'
-import { View } from '../Themed'
+import { StyleSheet } from 'react-native'
+import { Folder, File, CaretRight, CheckCircle } from 'phosphor-react-native'
 
-export type ItemData = {
+import { View, Text } from '../Themed'
+
+export interface ItemData {
   id: string
   title: string
   isDirectory?: boolean
 }
 
-type ItemProps = {
+interface ItemProps {
   item: ItemData
-  onPress: () => void
   isGridView?: boolean
+  selectedItemId: string | null
 }
 
-export function Item({ item, onPress, isGridView }: ItemProps) {
+export function Item({ item, isGridView, selectedItemId }: ItemProps) {
+  const isSelected = selectedItemId && selectedItemId === item.id
+
   return (
-    <TouchableOpacity onPress={onPress} style={styles.item} activeOpacity={0.5}>
+    <>
       <View
         style={[
           styles.iconAndName,
@@ -39,18 +42,28 @@ export function Item({ item, onPress, isGridView }: ItemProps) {
           {item.title}
         </Text>
       </View>
-      {item.isDirectory && !isGridView && <CaretRight />}
-    </TouchableOpacity>
+      {!isSelected && item.isDirectory && !isGridView ? (
+        <CaretRight />
+      ) : (
+        isSelected && (
+          <CheckCircle
+            weight="fill"
+            color="#269ECC"
+            style={
+              isGridView && {
+                position: 'absolute',
+                right: 0,
+                top: 10
+              }
+            }
+          />
+        )
+      )}
+    </>
   )
 }
 
 const styles = StyleSheet.create({
-  item: {
-    padding: 8,
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
   iconAndName: {
     gap: 8,
     alignItems: 'center'
